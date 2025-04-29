@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        nav { background: #333; padding: 1rem; }
+        nav a { color: white; margin: 0 10px; text-decoration: none; }
+        @media (max-width: 600px) { nav { text-align: center; } }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="#home">Start</a>
+    <a href="#about">Über uns</a>
+    <a href="#contact">Kontakt</a>
+</nav>
+<form action="https://formspree.io/f/YOUR-EMAIL" method="POST">
+    <label>Name: <input type="text" name="name" required></label><br>
+    <label>E-Mail: <input type="email" name="email" required></label><br>
+    <label>Nachricht: <textarea name="message" required></textarea></label><br>
+    <button type="submit">Senden</button>
+</form>
+<button onclick="document.body.classList.toggle('dark-mode')">🌓 Dark/Light</button>
+<style>
+    .dark-mode { background: #222; color: white; }
+</style>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1dhagen-am-teutoburger-wald" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<div id="countdown"></div>
+<script>
+    const endDate = new Date("2024-12-31").getTime();
+    setInterval(() => {
+        const now = new Date().getTime();
+        const distance = endDate - now;
+        document.getElementById("countdown").innerHTML =
+            Math.floor(distance / (1000 * 60 * 60 * 24)) + " Tage verbleibend!";
+    }, 1000);
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToolForge – Dev Tools</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0e0e0e;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #00ff88;
+        }
+        .tool {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        textarea, input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+            background-color: #222;
+            color: #fff;
+        }
+        button {
+            background-color: #00ff88;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #00cc66;
+        }
+        pre {
+            background-color: #111;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>ToolForge 🛠️</h1>
+<p>Deine nützliche Tool-Sammlung für Minecraft-Server, Discord-Bots und mehr!</p>
+
+<div class="tool">
+    <h2>Minecraft MOTD Generator</h2>
+    <input type="text" id="motdInput" placeholder="&aWillkommen auf dem Server!" />
+    <button onclick="generateMOTD()">Generieren</button>
+    <pre id="motdOutput"></pre>
+</div>
+
+<div class="tool">
+    <h2>Discord Slash-Command Template</h2>
+    <input type="text" id="cmdName" placeholder="Befehl (z. B. ping)" />
+    <input type="text" id="cmdDesc" placeholder="Beschreibung (z. B. Bot-Ping anzeigen)" />
+    <button onclick="generateSlashCommand()">Code generieren</button>
+    <pre id="cmdOutput"></pre>
+</div>
+
+<div class="tool">
+    <h2>Batch-Datei Reminder für Phase-6</h2>
+    <button onclick="generateBatch()">.bat-Datei anzeigen</button>
+    <pre id="batchOutput"></pre>
+</div>
+
+<script>
+    function generateMOTD() {
+        const input = document.getElementById("motdInput").value;
+        const output = input.replace(/&([0-9a-fk-or])/gi, "§$1");
+        document.getElementById("motdOutput").textContent = output;
+    }
+
+    function generateSlashCommand() {
+        const name = document.getElementById("cmdName").value.trim();
+        const desc = document.getElementById("cmdDesc").value.trim();
+        const code = `@bot.slash_command(name="${name}", description="${desc}")\nasync def ${name}(inter):\n    await inter.response.send_message("Hello from ${name}!")`;
+        document.getElementById("cmdOutput").textContent = code;
+    }
+
+    function generateBatch() {
+        const bat = `@echo off\nstart https://lernen.phase-6.de/v2/#/home\necho Denk an deine Vokabeln, Henry!\npause`;
+        document.getElementById("batchOutput").textContent = bat;
+    }
+</script>
+
+</body>
+</html>

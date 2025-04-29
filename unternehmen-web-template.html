@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musterfirma GmbH - Innovative Lösungen</title>
+    <style>
+        /* Globale Stile */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .logo span {
+            color: #3498db;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        /* Hero Bereich */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1920x1080');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        /* Über uns */
+        .about {
+            padding: 100px 0;
+            background: #f9f9f9;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: #2c3e50;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+
+        .about-text h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Dienstleistungen */
+        .services {
+            padding: 100px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: 5px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        /* Kontakt */
+        .contact {
+            padding: 100px 0;
+            background: #f9f9f9;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: #fff;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #3498db;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header mit Navigation -->
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">Muster<span>firma</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Startseite</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#services">Dienstleistungen</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero Bereich -->
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Innovative Lösungen für Ihr Unternehmen</h1>
+            <p>Wir helfen Ihnen, Ihre Geschäftsziele mit maßgeschneiderten Lösungen und modernster Technologie zu erreichen.</p>
+            <a href="#contact" class="btn">Kontakt aufnehmen</a>
+        </div>
+    </div>
+</section>
+
+<!-- Über uns -->
+<section class="about" id="about">
+    <div class="container">
+        <h2 class="section-title">Über uns</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Ihr zuverlässiger Partner seit 2010</h3>
+                <p>Die Musterfirma GmbH ist ein führender Anbieter von innovativen Geschäftslösungen mit Sitz in Berlin. Unser Team aus erfahrenen Experten ist darauf spezialisiert, Unternehmen jeder Größe dabei zu helfen, ihre Effizienz zu steigern und neue Märkte zu erschließen.</p>
+                <p>Mit über 10 Jahren Branchenerfahrung haben wir uns einen ausgezeichneten Ruf erarbeitet und betreuen mehr als 200 zufriedene Kunden in ganz Europa.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://via.placeholder.com/600x400" alt="Unser Team">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Dienstleistungen -->
+<section class="services" id="services">
+    <div class="container">
+        <h2 class="section-title">Unsere Dienstleistungen</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Unternehmensberatung</h3>
+                <p>Strategische Beratung zur Optimierung Ihrer Geschäftsprozesse und Steigerung der Profitabilität.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>IT-Lösungen</h3>
+                <p>Maßgeschneiderte Softwareentwicklung und IT-Infrastruktur für moderne Unternehmen.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📈</div>
+                <h3>Marketingstrategien</h3>
+                <p>Effektive Marketingkonzepte, die Ihre Marke stärken und neue Kunden gewinnen.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Kontakt -->
+<section class="contact" id="contact">
+    <div class="container">
+        <h2 class="section-title">Kontaktieren Sie uns</h2>
+        <div class="contact-form">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-Mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefon (optional)</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="message">Ihre Nachricht</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Nachricht senden</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Musterfirma GmbH</h3>
+                <p>Innovative Lösungen für Ihr Unternehmen. Professionell. Zuverlässig. Individuell.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Kontakt</h3>
+                <ul>
+                    <li>Musterstraße 123</li>
+                    <li>10115 Berlin</li>
+                    <li>Tel: +49 30 1234567</li>
+                    <li>Email: info@musterfirma.de</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="#home">Startseite</a></li>
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#services">Dienstleistungen</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Musterfirma GmbH. Alle Rechte vorbehalten.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

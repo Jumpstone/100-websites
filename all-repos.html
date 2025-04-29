@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Jumpstone's GitHub Repos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #4caf50;
+        }
+        .repo {
+            background: #1e1e1e;
+            border-left: 5px solid #4caf50;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        .repo a {
+            color: #90caf9;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .repo p {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<h1>Jumpstone's GitHub Repositories</h1>
+<div id="repo-container">Lade Repos...</div>
+
+<script>
+    async function loadRepos() {
+        const response = await fetch("https://api.github.com/users/Jumpstone/repos");
+        const repos = await response.json();
+        const container = document.getElementById("repo-container");
+        container.innerHTML = "";
+
+        repos.forEach(repo => {
+            const repoDiv = document.createElement("div");
+            repoDiv.className = "repo";
+            repoDiv.innerHTML = `
+          <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+          <p>${repo.description || "Keine Beschreibung verfügbar."}</p>
+        `;
+            container.appendChild(repoDiv);
+        });
+    }
+
+    loadRepos();
+</script>
+</body>
+</html>

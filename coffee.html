@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaffee-Rechner</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px; }
+        h1 { color: #6F4E37; text-align: center; }
+        .input-group { margin: 15px 0; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, select { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        button { background: #6F4E37; color: white; border: none; padding: 10px 15px; cursor: pointer; width: 100%; }
+        #result { margin-top: 20px; padding: 10px; background: #f4f4f4; border-radius: 4px; }
+    </style>
+</head>
+<body>
+<h1>☕ Kaffee-Rechner</h1>
+<div class="input-group">
+    <label for="amount">Menge pro Tasse:</label>
+    <input type="number" id="amount" value="200" min="50" step="10">
+    <select id="unit">
+        <option value="ml">Milliliter (ml)</option>
+        <option value="cups">Tassen</option>
+    </select>
+</div>
+<div class="input-group">
+    <label for="strength">Stärke:</label>
+    <select id="strength">
+        <option value="mild">Mild (7g pro Tasse)</option>
+        <option value="medium" selected>Medium (10g pro Tasse)</option>
+        <option value="strong">Stark (14g pro Tasse)</option>
+    </select>
+</div>
+<button onclick="calculate()">Berechnen</button>
+<div id="result"></div>
+
+<script>
+    function calculate() {
+        const amount = parseFloat(document.getElementById("amount").value);
+        const unit = document.getElementById("unit").value;
+        const strength = document.getElementById("strength").value;
+
+        // Gramm pro Einheit basierend auf Stärke
+        let gramsPerUnit;
+        if (strength === "mild") gramsPerUnit = 7;
+        else if (strength === "medium") gramsPerUnit = 10;
+        else gramsPerUnit = 14;
+
+        // Anpassung für Milliliter (Standard: 1 Tasse = 200ml)
+        const totalGrams = (unit === "ml") ?
+            (gramsPerUnit / 200 * amount) :
+            (gramsPerUnit * amount);
+
+        document.getElementById("result").innerHTML = `
+                <strong>Benötigte Kaffeemenge:</strong><br>
+                ${totalGrams.toFixed(1)} Gramm Kaffeepulver<br>
+                <small>(${strength}er Stärke)</small>
+            `;
+    }
+</script>
+</body>
+</html>

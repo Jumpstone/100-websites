@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lustige Seite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #ff6347;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .gif-container {
+            margin: 20px 0;
+        }
+
+        img {
+            width: 300px;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+
+        .button {
+            padding: 15px 30px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .button:hover {
+            background-color: #ff4500;
+        }
+
+        .message {
+            margin-top: 30px;
+            font-size: 1.5em;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Willkommen auf der Lustigen Seite!</h1>
+
+<div class="gif-container">
+    <img src="https://cdn.pixabay.com/photo/2016/09/04/12/20/pink-1643831_1280.jpg" alt="Lustiges GIF">
+</div>
+
+<button class="button" onclick="randomMessage()">Lass uns lachen!</button>
+
+<div class="message" id="funnyMessage"></div>
+
+<script>
+    const messages = [
+        "Warum können Geister so schlecht lügen? Weil man durch sie hindurchsehen kann!",
+        "Warum gehen Pilze immer mit ins Kino? Weil sie die besten Champignons sind!",
+        "Was macht ein Pirat am Computer? Er drückt die Enter-Taste!",
+        "Warum haben Bienen so viel Stress? Weil sie ständig in den Bienenstock müssen!",
+        "Was ist orange und läuft durch den Wald? Eine Wanderine!"
+    ];
+
+    function randomMessage() {
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        const message = messages[randomIndex];
+        document.getElementById('funnyMessage').textContent = message;
+    }
+</script>
+
+</body>
+</html>

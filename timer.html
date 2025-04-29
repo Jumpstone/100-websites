@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Timer Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 100px;
+            background-color: #f0f0f0;
+        }
+        #timer {
+            font-size: 60px;
+            margin-bottom: 30px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Countdown Timer</h1>
+<div id="timer">00:00</div>
+<input type="number" id="minutes" placeholder="Minuten" min="0" style="font-size: 18px; width: 100px;">
+<button onclick="startTimer()">Start</button>
+
+<script>
+    let countdown;
+    function startTimer() {
+        clearInterval(countdown);
+        const minutesInput = document.getElementById("minutes").value;
+        let time = parseInt(minutesInput) * 60;
+
+        if (isNaN(time) || time <= 0) {
+            alert("Bitte gib eine gültige Minutenanzahl ein.");
+            return;
+        }
+
+        countdown = setInterval(() => {
+            const minutes = Math.floor(time / 60);
+            const seconds = time % 60;
+            document.getElementById("timer").textContent =
+                `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+            if (time <= 0) {
+                clearInterval(countdown);
+                alert("Zeit ist abgelaufen!");
+            } else {
+                time--;
+            }
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>

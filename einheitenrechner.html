@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einheitenumrechner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .converter {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="converter">
+    <h1>Einheitenumrechner</h1>
+    <input type="number" id="inputValue" placeholder="Wert eingeben" />
+
+    <select id="fromUnit">
+        <option value="cm">Zentimeter (cm)</option>
+        <option value="m">Meter (m)</option>
+        <option value="km">Kilometer (km)</option>
+        <option value="kg">Kilogramm (kg)</option>
+        <option value="g">Gramm (g)</option>
+        <option value="C">Celsius (°C)</option>
+        <option value="F">Fahrenheit (°F)</option>
+        <option value="watt">Watt (W)</option>
+        <option value="ampere">Ampere (A)</option>
+        <!-- Weitere Einheiten können hier hinzugefügt werden -->
+    </select>
+
+    <select id="toUnit">
+        <option value="m">Meter (m)</option>
+        <option value="cm">Zentimeter (cm)</option>
+        <option value="km">Kilometer (km)</option>
+        <option value="g">Gramm (g)</option>
+        <option value="kg">Kilogramm (kg)</option>
+        <option value="C">Celsius (°C)</option>
+        <option value="F">Fahrenheit (°F)</option>
+        <option value="watt">Watt (W)</option>
+        <option value="ampere">Ampere (A)</option>
+        <!-- Weitere Einheiten können hier hinzugefügt werden -->
+    </select>
+
+    <button onclick="convert()">Umrechnen</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function convert() {
+        let inputValue = parseFloat(document.getElementById('inputValue').value);
+        let fromUnit = document.getElementById('fromUnit').value;
+        let toUnit = document.getElementById('toUnit').value;
+        let result = 0;
+
+        if (isNaN(inputValue)) {
+            document.getElementById('result').textContent = 'Bitte gib eine Zahl ein!';
+            return;
+        }
+
+        // Längenumrechnungen
+        if (fromUnit === 'cm' && toUnit === 'm') {
+            result = inputValue / 100;
+        } else if (fromUnit === 'm' && toUnit === 'cm') {
+            result = inputValue * 100;
+        } else if (fromUnit === 'km' && toUnit === 'm') {
+            result = inputValue * 1000;
+        } else if (fromUnit === 'm' && toUnit === 'km') {
+            result = inputValue / 1000;
+        }
+
+        // Masseumrechnungen
+        else if (fromUnit === 'kg' && toUnit === 'g') {
+            result = inputValue * 1000;
+        } else if (fromUnit === 'g' && toUnit === 'kg') {
+            result = inputValue / 1000;
+        }
+
+        // Temperaturumrechnungen
+        else if (fromUnit === 'C' && toUnit === 'F') {
+            result = (inputValue * 9/5) + 32;
+        } else if (fromUnit === 'F' && toUnit === 'C') {
+            result = (inputValue - 32) * 5/9;
+        }
+
+        // Elektrische Umrechnungen
+        else if (fromUnit === 'watt' && toUnit === 'ampere') {
+            result = inputValue / 230; // Annahme: Standardspannung 230V
+        } else if (fromUnit === 'ampere' && toUnit === 'watt') {
+            result = inputValue * 230; // Annahme: Standardspannung 230V
+        }
+
+        // Zeigt das Ergebnis an
+        document.getElementById('result').textContent = `Ergebnis: ${result} ${toUnit}`;
+    }
+</script>
+
+</body>
+</html>

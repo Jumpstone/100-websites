@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Wetter-Check</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        #weather { margin-top: 20px; padding: 15px; background: #e3f2fd; border-radius: 8px; }
+    </style>
+</head>
+<body>
+<h1>🌦️ Wetter-Check</h1>
+<input type="text" id="city" placeholder="Stadtname">
+<button onclick="getWeather()">Suchen</button>
+<div id="weather"></div>
+
+<script>
+    async function getWeather() {
+        const city = document.getElementById("city").value;
+        const apiKey = "83a61cf2b171f9cfcd2b9cf499eefdc1"; // Hier OpenWeatherMap-Key eintragen!
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=de&appid=${apiKey}`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            document.getElementById("weather").innerHTML = `
+                    <h2>${data.name}</h2>
+                    <p>${data.weather[0].description}</p>
+                    <p>🌡️ ${data.main.temp}°C (Gefühlt: ${data.main.feels_like}°C)</p>
+                `;
+        } catch (error) {
+            document.getElementById("weather").innerHTML = "Stadt nicht gefunden!";
+        }
+    }
+</script>
+</body>
+</html>
